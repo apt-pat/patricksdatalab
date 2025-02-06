@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordCloud</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #070707;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem;
+            background-color: #212122;
+            border-bottom: 4px solid #21262d;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            color: #b95db5;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #232324;
+        }
+
+        section {
+            padding: 4rem 10%;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: #b95db5;
+            margin-bottom: 1.5rem;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #0a0b0c;
+        }
+
+        .video-container {
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .download-link {
+            text-decoration: none;
+            background-color: #b95db5;
+            color: #ffffff;
+            padding: 0.8rem 2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(35, 134, 54, 0.8);
+        }
+
+        .download-link:hover {
+            background-color: #2ea043;
+            color: #ffffff;
+            box-shadow: 0 6px 20px rgba(35, 134, 54, 1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #161b22;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            color: #79c0ff;
+        }
+    </style>
+</head><body>
+    <header>
+        <h1>Análise de Texto e Visualização com Nuvem de Palavras</h1>
+    </header>
+
+    <section>
+        <img src="WordCloud3dPrinter.png alt="dashboard em uso"  width="700" height="400" />
+
+        <h2>Descrição</h2>
+<p>O projeto de Análise de Texto e Visualização com Nuvem de Palavras Personalizada surgiu a partir da minha participação no artigo científico "Three-Dimensional Printed Laryngoscopes as Allies Against COVID-19", no qual contribui com a alocação de artefatos na plataforma LIPECIN, responsável por disponibilizar arquivos de impressão 3D para facilitar o acesso a dispositivos médicos essenciais. O estudo abordou a criação de laringoscópios de baixo custo utilizando manufatura aditiva, fornecendo uma alternativa viável e acessível para suprir a escassez desses equipamentos durante a pandemia. Inspirado por essa experiência, desenvolvi este projeto para automatizar a extração e análise de textos acadêmicos, destacando os principais conceitos abordados em um artigo científico por meio de uma nuvem de palavras. Além de tornar a análise textual mais acessível e visualmente impactante, utilizei uma máscara personalizada para que a nuvem de palavras fosse gerada em um formato específico, como o de uma impressora 3D, reforçando a conexão com o tema da fabricação digital e a democratização do conhecimento. </p>
+
+<p>Este projeto não se limita apenas a processar textos, mas busca transformar grandes volumes de informação em insights visuais compreensíveis. Ele automatiza a extração de conteúdo a partir de artigos científicos, processa e filtra os termos mais relevantes e os organiza de forma estratégica para criar uma representação gráfica intuitiva. Além disso, a escolha de uma máscara personalizada não é apenas estética, mas sim uma forma de contextualizar os dados de maneira mais significativa. A integração de técnicas de processamento de linguagem natural (NLP) garante que apenas palavras realmente relevantes sejam utilizadas na nuvem, excluindo termos comuns e irrelevantes. Dessa forma, o projeto não apenas traduz dados em imagens, mas potencializa a capacidade de análise ao reduzir o tempo necessário para interpretar documentos complexos, sendo uma ferramenta útil tanto para pesquisadores quanto para profissionais que lidam com grandes quantidades de informação textual. </p>
+       
+</section>
+
+    <section>
+        <h2>Tecnologias Utilizadas</h2>
+        <p>Para tornar essa análise textual eficiente e interativa, utilizei diversas tecnologias que garantem a extração, filtragem e visualização dos dados de maneira automatizada. A biblioteca Goose3 foi empregada para extrair o conteúdo bruto dos artigos diretamente da web, garantindo que apenas o texto relevante fosse processado. O NLTK (Natural Language Toolkit) foi essencial para o tratamento dos dados textuais, removendo palavras irrelevantes e identificando os termos mais significativos dentro do conteúdo analisado. A geração da nuvem de palavras foi realizada por meio da biblioteca WordCloud, que possibilitou a criação de um gráfico dinâmico e intuitivo, enquanto PIL e OpenCV foram utilizadas para manipular a máscara personalizada, garantindo que a visualização final tivesse um formato específico, como o de uma impressora 3D. Por fim, a exibição do resultado foi feita com Matplotlib, permitindo que a nuvem de palavras fosse gerada com alta qualidade e apresentada de forma clara e acessível. A combinação dessas tecnologias possibilitou a criação de um fluxo de trabalho otimizado, garantindo que o projeto pudesse ser aplicado de forma prática e replicável para diversas finalidades.</p>
+    </section>
+
+</body>
