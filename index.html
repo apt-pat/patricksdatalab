@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Alchemist | Patrick Carvalho Cabreira</title>
-
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-
+    
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
 
     <style>
@@ -138,7 +138,7 @@
             justify-content: center;
             transition: var(--transition);
         }
-
+        
         .theme-toggle:hover {
             background-color: var(--primary);
             color: #fff;
@@ -160,7 +160,7 @@
         .animation-container {
             width: 100%;
             max-width: 500px;
-            margin-bottom: 2rem;
+            margin-bottom: 2rem; 
             filter: drop-shadow(0 0 20px var(--primary-glow));
         }
 
@@ -168,7 +168,7 @@
             font-size: 5rem;
             margin-bottom: 0.5rem;
             line-height: 1.1;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.1); 
         }
 
         .hero p {
@@ -194,7 +194,7 @@
             left: 50%;
             transform: translateX(-50%);
         }
-
+        
         section h2::after {
             content: '';
             display: block;
@@ -226,9 +226,9 @@
             gap: 10px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            padding-bottom: 10px;
+            padding-bottom: 10px; 
         }
-
+        
         .carousel::-webkit-scrollbar {
             display: none;
         }
@@ -257,12 +257,14 @@
             margin-right: auto;
         }
 
-        /* --- CERTIFICAÇÕES --- */
+        /* --- CERTIFICAÇÕES (AGORA EM GRID 3 COLUNAS) --- */
         .certification-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Força 3 colunas */
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .certification-card {
@@ -275,7 +277,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            width: 280px;
+            width: auto; /* Remove largura fixa para o grid controlar */
             box-shadow: var(--shadow-card);
         }
 
@@ -302,12 +304,11 @@
         /* --- PROJETOS (GRID 3X3 FORÇADO) --- */
         .projects {
             display: grid;
-            /* FORÇA 3 COLUNAS FIXAS EM TELAS GRANDES */
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr); /* 3 Colunas */
             gap: 30px;
             width: 100%;
-            max-width: 1200px; /* Limita largura total para não esticar demais */
-            margin: 0 auto; /* Centraliza o grid na tela */
+            max-width: 1200px; 
+            margin: 0 auto; 
         }
 
         .project-card {
@@ -375,15 +376,14 @@
             box-shadow: 0 0 15px var(--primary-glow);
         }
 
-        /* --- CONTATO (CENTRALIZAÇÃO CORRIGIDA) --- */
+        /* --- CONTATO --- */
         #contact {
-            /* Garante alinhamento central absoluto */
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: center; 
             justify-content: center;
             text-align: center;
-            padding: 5rem 1rem 8rem 1rem; /* Padding lateral pequeno para mobile */
+            padding: 5rem 1rem 8rem 1rem;
             border-top: 1px solid var(--border-color);
             width: 100%;
         }
@@ -391,8 +391,8 @@
         #contact h2 {
             font-size: 2rem;
             width: 100%;
-            max-width: 800px; /* Impede que o texto fique largo demais */
-            margin: 0 auto 3rem auto; /* Margem automática centraliza horizontalmente */
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
             line-height: 1.4;
             color: var(--text-headings);
             text-transform: none;
@@ -415,7 +415,7 @@
             transition: var(--transition);
             filter: grayscale(100%);
         }
-
+        
         body:not(.light-mode) .social-links a img {
              filter: grayscale(100%) brightness(200%);
         }
@@ -436,8 +436,8 @@
 
         /* --- RESPONSIVIDADE (MEDIA QUERIES) --- */
         @media (max-width: 1024px) {
-            /* Em tablets, muda para 2 colunas */
-            .projects {
+            /* Em tablets, muda para 2 colunas tanto projetos quanto certificações */
+            .projects, .certification-cards {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -448,7 +448,7 @@
             nav a { font-size: 0.8rem; margin: 0 0.5rem; }
             section { padding: 4rem 5%; }
             .carousel img { width: 80vw; height: auto; }
-
+            
             nav {
                 flex-direction: column;
                 padding: 1rem;
@@ -458,7 +458,7 @@
             }
 
             /* Em celular, muda para 1 coluna */
-            .projects {
+            .projects, .certification-cards {
                 grid-template-columns: 1fr;
             }
         }
@@ -473,7 +473,7 @@
             <a href="#projects">Projetos</a>
             <a href="#certifications">Certificações</a>
             <a href="#contact">Contato</a>
-
+            
             <button class="theme-toggle" id="theme-toggle" title="Alternar Tema">
                 <span id="theme-icon">🌙</span>
             </button>
@@ -504,18 +504,18 @@
                 <img src="bee3.jpg" alt="Foto Bumblebee">
             </div>
         </div>
-
+    
         <p>Olá, sou o Patrick. Entusiasta em transformar dados em decisões estratégicas, combinando técnica analítica com visão de negócios. Finalizando minha formação em Análise e Desenvolvimento de Sistemas, construí um perfil híbrido que une a robustez da Engenharia de Dados (Python, SQL, Pandas) com um interesse genuíno por tecnologias emergentes e automação preditiva.</p>
-
+        
         <p>Minha abordagem vai além do código: busco entender os desafios financeiros e operacionais para criar soluções que geram valor real. Com certificações recentes em Ciência de Dados e novas tecnologias, mantenho-me constantemente atualizado sobre as ferramentas que estão moldando o futuro do mercado.</p>
-
+    
         <p>Fora do ambiente de desenvolvimento, sou meio maratonista — uma disciplina que levo para a vida: resiliência, foco e melhoria contínua. E, claro, conto sempre com a supervisão atenta do meu fiel escudeiro, Bumblebee, que me lembra da importância do equilíbrio (e de pausas estratégicas).</p>
     </section>
 
     <section id="certifications">
         <h2>Certificações</h2>
         <p style="text-align: center; margin-top: -2rem; margin-bottom: 3rem;">Conquistas ao longo da minha jornada:</p>
-
+        
         <div class="certification-cards">
             <div class="certification-card">
                 <a href="Santander.pdf" target="_blank">
@@ -552,7 +552,7 @@
                 <p><strong>320h</strong></p>
                 <p>Big Data, Cloud Computing, IoT e Indústria 4.0.</p>
             </div>
-
+                
             <div class="certification-card">
                 <a href="Dell_GenAI_Foundations_certificate.pdf" target="_blank">
                     <img src="dell-prompt-engineering-achievement-version-1-0 (1).png" alt="Dell GenAI">
@@ -560,7 +560,7 @@
                 </a>
                 <p>Fundamentos de IA Generativa.</p>
             </div>
-
+                
             <div class="certification-card">
                 <a href="Dell_Prompt_Engineering_Achievement_certificate.pdf" target="_blank">
                     <img src="dell-genai-foundations.png" alt="Dell Prompt Engineering">
@@ -570,7 +570,7 @@
             </div>
         </div>
     </section>
-
+    
     <section id="projects">
         <h2>Projetos</h2>
         <div class="projects">
@@ -626,7 +626,7 @@
 
     <section id="contact">
         <h2>Se você acredita no poder dos dados para transformar o mundo e gerar impacto, vamos conversar!</h2>
-
+        
         <div class="social-links">
             <a href="https://www.linkedin.com/in/patrick-carvalho-cabreira-23b146180/" target="_blank">
                 <img src="linkedin.png" alt="LinkedIn">
@@ -642,7 +642,7 @@
             </a>
         </div>
     </section>
-
+    
     <footer>
         <p>&copy; 2024 Patrick Carvalho Cabreira - Data Alchemist</p>
     </footer>
@@ -677,7 +677,7 @@
 
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('light-mode');
-
+            
             if (body.classList.contains('light-mode')) {
                 themeIcon.textContent = '☀️';
             } else {
