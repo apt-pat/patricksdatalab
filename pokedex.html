@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Pokedex | Data Alchemist</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET E VARIÁVEIS (Igual à Home) --- */
+        :root {
+            --primary: #b95db5;
+            --primary-glow: rgba(185, 93, 181, 0.4);
+            --bg-body: #0a0a0c;
+            --bg-nav: rgba(10, 10, 12, 0.85);
+            --bg-card: #16161a;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --text-headings: #ffffff;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-card: 0 10px 20px rgba(0,0,0,0.3);
+            --transition: all 0.3s ease;
+        }
+
+        body.light-mode {
+            --bg-body: #f4f4f9;
+            --bg-nav: rgba(255, 255, 255, 0.85);
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --text-headings: #1a1a1a;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --shadow-card: 0 10px 20px rgba(0,0,0,0.08);
+            --primary-glow: rgba(185, 93, 181, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.8; /* Leitura melhor para textos longos */
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- TIPOGRAFIA --- */
+        h1, h2, h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-headings);
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--bg-nav);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-headings);
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-headings);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        /* --- HEADER DO PROJETO --- */
+        header.project-header {
+            padding: 8rem 10% 4rem 10%;
+            text-align: center;
+            background: radial-gradient(circle at top, var(--primary-glow) 0%, transparent 60%);
+        }
+
+        header.project-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        header.project-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-main);
+            font-weight: 300;
+        }
+
+        /* --- CONTEÚDO PRINCIPAL --- */
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 5% 5rem 5%;
+        }
+
+        .media-container {
+            margin: 2rem 0 4rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .media-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Efeito de brilho na borda da imagem */
+        .media-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
+
+        /* --- SEÇÕES DE TEXTO (CARD STYLE) --- */
+        .text-section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .text-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .text-section p {
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            text-align: justify;
+        }
+
+        .text-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- BOTÃO DE VOLTAR --- */
+        .back-btn-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-family: 'Russo One', sans-serif;
+            text-transform: uppercase;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 20px var(--primary-glow);
+            transform: translateY(-3px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #000;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            header.project-header h1 { font-size: 2.5rem; }
+            .text-section { padding: 1.5rem; }
+            nav .nav-container { gap: 1rem; }
+            nav a { font-size: 0.8rem; }
+            nav { flex-direction: column; padding: 1rem; }
+            .theme-toggle { margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">Sobre</a>
+            <a href="index.html#projects">Projetos</a>
+            <a href="index.html#contact">Contato</a>
+            
+            <button class="theme-toggle" id="theme-toggle" title="Alternar Tema">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="project-header">
+        <h1>PokéData Analytics</h1>
+        <p>A ciência por trás da batalha: transformando dados de jogos em inteligência estratégica.</p>
+    </header>
+
+    <div class="content-container">
+        <div class="media-container">
+            <!-- Coloque aqui o GIF do seu projeto Pokedex em ação -->
+            <img src="rpgg.gif" alt="Dashboard PokéData Analytics em uso">
+        </div>
+
+        <section class="text-section">
+            <h2>Descrição do Projeto</h2>
+            <p>Este projeto nasceu com a intenção de elevar a Pokédex tradicional a um novo patamar: uma plataforma de inteligência de dados. Enquanto a Pokédex clássica apenas informa, o PokéData analisa. Ao examinar profundamente os atributos base (Stats), tipos elementais e vantagens táticas de todas as espécies da Geração 1, o projeto oferece uma ferramenta estratégica para entender quais Pokémon são matematicamente superiores para enfrentar os desafios da região de Kanto.</p>
+            
+            <p>O grande desafio enfrentado por treinadores, seja nos jogos ou no cenário competitivo, é prever o resultado de um confronto antes mesmo dele acontecer. O equilíbrio entre Ataque, Defesa e Velocidade é sutil e decisivo. Este projeto resolve esse problema ao implementar um Simulador de Batalha em Tempo Real, que cruza dados complexos de tipagem e atributos para gerar previsões instantâneas de eficácia. A análise elimina a 'tentativa e erro', permitindo que o treinador tome decisões baseadas em dados concretos, e não apenas na intuição.</p>
+            
+            <p>Além da engenharia de dados, a plataforma utiliza o poder visual do Microsoft Power BI para recriar a experiência nostálgica dos consoles clássicos. Por meio de uma interface imersiva inspirada no Game Boy Advance, o usuário pode interagir com os dados de forma natural. A utilização de lógica avançada em DAX garante que o simulador não seja apenas um painel estático, mas um 'juiz' inteligente capaz de calcular multiplicadores de dano e imunidades dinamicamente, adaptando-se a qualquer combinação de oponentes escolhida.</p>
+        </section>
+
+        <section class="text-section">
+            <h2>Tecnologias Utilizadas</h2>
+            <p>O projeto foi desenvolvido orquestrando uma pipeline de dados moderna e eficiente:</p>
+            <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                <li style="margin-bottom: 10px;"><strong>🐍 Python & Pandas:</strong> Motor de extração (ETL) que consome e higieniza dados da API pública (PokéAPI), realizando tratamento de textos e conversão de unidades.</li>
+                <li style="margin-bottom: 10px;"><strong>📊 Power BI & DAX:</strong> Construção da interface visual e da lógica de negócio complexa para o simulador de batalhas, cruzando tabelas desconectadas em tempo real.</li>
+                <li style="margin-bottom: 10px;"><strong>🕸️ Web Scraping (Power Query/M):</strong> Técnicas avançadas de raspagem de dados para capturar tabelas dinâmicas de regras de combate (Type Chart) diretamente da web.</li>
+            </ul>
+        </section>
+
+        <div class="back-btn-container">
+            <a href="index.html#projects" class="btn-primary">Voltar para Projetos</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Patrick Carvalho Cabreira - Data Alchemist</p>
+    </footer>
+
+    <script>
+        // --- SCRIPT DO TEMA (DARK/LIGHT) ---
+        // Mantém a consistência com a página principal se o usuário já tiver escolhido um tema
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        // Verifica se há preferência salva (opcional, mas recomendado para consistência)
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            themeIcon.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            let theme = 'dark';
+            
+            if (body.classList.contains('light-mode')) {
+                themeIcon.textContent = '☀️';
+                theme = 'light';
+            } else {
+                themeIcon.textContent = '🌙';
+            }
+            localStorage.setItem('theme', theme); // Salva a escolha para navegar entre as páginas sem mudar a cor
+        });
+    </script>
+</body>
+</html>
